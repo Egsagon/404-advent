@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins|Pixelify Sans');
+
+:root {
+    --primary: #ED414E;
+    --dim: #070001;
+    --black: #000;
+    --white: #fff;
+}
+
+* {
+    color: var(--white);
+    font-family: Poppins;
+}
+
+body {
+    background-color: var(--dim);
+    overflow-y: scroll;
+}
+
+h1 {
+    position: absolute;
+    right: 0;
+    color: var(--white);
+    opacity: .5;
+    border: 2px solid var(--white);
+    border-right: none;
+    font-size: 40px;
+    font-family: 'Pixelify Sans';
+    background-color: var(--black);
+    padding: 5px 30px;
+    border-radius: 10px 0 0 10px;
+    padding-right: 40px;
+    margin-top: 20px;
+    user-select: none;
+    transition: all ease-in-out .3s;
+    z-index: 10;
+}
+
+h1 span {
+    color: var(--white);
+    font-size: 60px;
+    font-family: 'Pixelify Sans';
+}
+
+h1 i {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: all ease-in-out .3s;
+}
+
+h1:hover i {
+    opacity: 1;
+    margin-right: 30px;
+}
+
+.discover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+#present {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    transition: all ease-in-out .3s;
+    cursor: pointer;
+}
+
+#present:hover {
+    scale: 1.1;
+}
+
+#present:active {
+    scale: 1.2;
+}
+
+#present .star {
+    position: absolute;
+    z-index: 2;
+    user-select: none;
+}
+
+.rib {
+    background-color: var(--dim);
+    z-index: 3;
+    position: absolute;
+    transition: all ease-in-out .3s;
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.ribh {
+    width: 300px;
+    height: 20px;
+    transform: translateY(calc(150px - 50%));
+}
+
+.ribv {
+    width: 20px;
+    height: 300px;
+    transform: translateX(calc(150px - 50%));
+}
+
+#bk {
+    position: absolute;
+    transform: translate(calc(150px - 50%), -80%);
+    height: 150px;
+    user-select: none;
+
+    display: none; /* TEMP */
+}
+
+#present.pop {
+    transition-duration: .8s;
+    scale: 20;
+    transform: rotate(360deg);
+    opacity: 0;
+}
+
+#present.pop .rib {
+    background-color: transparent;
+    filter: blur(25px);
+}
+
+#pres {
+    z-index: 9;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: all ease-in-out .35s;
+    opacity: 0;
+    user-select: none;
+}
+
+#pres.opened {
+    display: flex;
+    opacity: 1;
+}
+
+#logo {
+    width: 260px;
+    border-radius: 20px;
+}
+
+#pres .glow {
+    position: absolute;
+    display: inline;
+    padding: 6px;
+    padding-bottom: 0;
+    border-radius: 20px;
+    transform: translateY(-100%);
+}
+
+#pres h3 {
+    font-size: 50px;
+    font-family: 'Pixelify Sans';
+    margin-bottom: 0;
+}
+
+#pres h3, #pres p {
+    background-color: #000000;
+    color: #fff !important;
+    opacity: .8;
+    padding: 10px;
+    color: var(--black);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+#pres i {
+    font-size: 30px;
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+#pres i:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+#content {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+#pres h3 span {
+    color: var(--primary);
+}
+
+
+.glow::before,
+.glow::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(45deg, yellow, coral, magenta, hotpink,
+                                       purple, orange, skyblue);
+    background-size: 500%;
+    width: calc(100%);
+    height: calc(100%);
+    z-index: -1;
+    animation: animate 18s linear infinite;
+    border-radius: 55px;
+}
+
+@keyframes animate {
+    0%, 100% { background-position: 0 0; }
+    50%  { background-position: 400% 0; }
+}
+
+.glow::after {
+    filter: blur(80px);
+    opacity: 1;
+}
+
+#snow {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    z-index: -10;
+}
+
+.snow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+@media (max-width: 700px) or (max-height: 700px) {
+    body > a {
+        display: none;
+    }
+}
