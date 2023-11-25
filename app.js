@@ -33,6 +33,7 @@ $('#present').on('click touchend', () => {
     if (clicks.length > 9 && delta < 500) {
 
         $('#present').addClass('pop')
+        $('.discover > h3').css('opacity', 0)
         setTimeout(() => $('#pres').addClass('opened'), 300)
         setTimeout(() => $('#present').css('display', 'none'), 800)   
         setTimeout(() => $('#content').css('display', 'flex'), 500)   
@@ -41,8 +42,4 @@ $('#present').on('click touchend', () => {
             $(el).css('background-color', rand(confettis))
         })
     }
-})
-
-$('#pres i').on('click', () => {
-    $('html, body').animate({ scrollTop: $(`#content`).offset().top }, 500)
 })
