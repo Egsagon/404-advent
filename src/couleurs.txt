@@ -1,5 +1,0 @@
-Primary: #ED414E
-
-Dim: #070001
-Black: #000000
-White: #FFFFFF

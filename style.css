@@ -1,15 +1,13 @@
+/* Egsagon - 2023 */
+
 @import url('https://fonts.googleapis.com/css?family=Poppins|Pixelify Sans');
 
 :root {
-    --primary: #ED414E;
-    --dim: #070001;
-    --black: #000;
-    --white: #fff;
+    --bg-color: color-mix(in srgb, var(--white) calc(100% * var(--is-light-scheme)),
+                                   var(--black));
 
-    /* 2 fois */
-    --slides: url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg'),
-              url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg');
-    --slide-width: 600px
+    --fg-color: color-mix(in srgb, var(--black) calc(100% * var(--is-light-scheme)),
+                                   var(--white));
 }
 
 * {
@@ -19,7 +17,7 @@
 }
 
 body {
-    background-color: var(--dim);
+    background-color: var(--bg-color);
     overflow-y: auto;
 }
 
@@ -138,7 +136,7 @@ h1:hover i {
 }
 
 .rib {
-    background-color: var(--dim);
+    background-color: var(--bg-color);
     z-index: 3;
     position: absolute;
     transition: all ease-in-out .3s;
@@ -210,13 +208,11 @@ h1:hover i {
 }
 
 #pres h3, #pres p {
-    background-color: #000000;
     color: #fff !important;
-    opacity: .8;
     padding: 20px;
     color: var(--black);
     border-radius: 20px;
-    backdrop-filter: blur(40px);
+    text-align: center;
 }
 
 #pres i {
@@ -271,13 +267,14 @@ h1:hover i {
     margin: 0;
     padding: 0;
     z-index: -10;
+    filter: invert(var(--is-light-scheme));
 }
 
 .snow {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 50%;
 }
 
@@ -314,15 +311,16 @@ h1:hover i {
     white-space: -pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
+    user-select: none;
+    cursor: text;
 }
 
 #content .slider {
     margin: 20px;
     padding: 20px;
-    background-color: var(--black);
     border-radius: 20px;
     margin-top: 0;
-    width: 800px;
+    width: min(800px, calc(100vw - 40px * 2));
 }
 
 #content .wrap {
@@ -331,46 +329,106 @@ h1:hover i {
 }
 
 #content .slider .images {
-    width: calc(600px * 2 * 3);
+    width: calc(600px * 2 * var(--slide-count));
     height: 400px;
-    
-    background: url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg'),
-                url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg');
-    
+    background: var(--slides);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: 0, 600px, 1200px, 1800px, 2400px, 3000px;
 
-    animation: slide calc(10s * 3) linear infinite;
+    /* Multiples de 600 */
+    background-position: 0, 600px, 1200px, 1800px, 2400px, 3000px, 3600px,
+                         4200px, 4800px, 5400px, 6000px;
+
+    animation: slide calc(10s * var(--slide-count)) linear infinite;
+}
+
+.socials {
+    background-color: var(--black);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.socials div {
+    display: flex;
+}
+
+.socials a {
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    transition: all ease-in-out .3s;
+}
+
+.socials a:first-child {
+    margin-left: 10px;
+}
+
+.socials a:last-child {
+    margin-right: 10px;
+}
+
+#creds {
+    font-size: 12px;
+    user-select: none;
+    cursor: text;
+}
+
+#pres h3,
+#pres p,
+#content pre,
+.socials,
+.slider {
+    border: 2px solid var(--fg-color);
+    background-color: unset !important;
+    backdrop-filter: blur(5px);
+    color: var(--fg-color) !important;
+}
+
+.socials * {
+    color: var(--fg-color) !important;
+    user-select: none;
+}
+
+.socials a:hover {
+    background-color: var(--primary);
+}
+
+#banner {
+    width: 100%;
+    height: 100px;
+
+    background-image: url('src/Banner.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-600px * 3))
-    }
+    0%   { transform: translateX(0)                }
+    100% { transform: translateX(calc(-600px * 3)) }
 }
 
 @media (max-width: 700px) or (max-height: 700px) {
-    body > a { display: none; }
+    body > a { display: none }
 }
 
 @media (max-height: 950px) {
-    .discover .fa-solid { display: none; }
+    .discover .fa-solid { display: none }
 }
 
 @media (max-height: 825px) {
-    #pres {
-        flex-direction: row;
-    }
-
-    #pres h3 {
-        display: none;
-    }
-
-    #pres p {
-        margin-left: 40px;
-    }
+    #pres    { flex-direction: row }
+    #pres h3 { display: none       }
+    #pres p  { margin-left: 40px   }
 }
