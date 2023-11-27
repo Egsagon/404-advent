@@ -90,8 +90,13 @@ h1:hover i {
     transition: all ease-in-out .3s;
     cursor: pointer;
     border: 7px solid var(--bg-color);
-    border-radius: var(--logo-border-radius);
     z-index: 5;
+}
+
+#present,
+#present::before,
+#present::after {
+    border-radius: 50px;
 }
 
 .bkt {
