@@ -233,8 +233,7 @@ h1:hover i {
     color: var(--primary);
 }
 
-.glow::before,
-.glow::after {
+.glow::before {
     content: '';
     position: absolute;
     left: 0;
@@ -242,21 +241,19 @@ h1:hover i {
     background: linear-gradient(45deg, yellow, coral, magenta, hotpink,
                                        purple, orange, skyblue);
     background-size: 500%;
-    width: calc(100%);
-    height: calc(100%);
+    width: 300px;
+    height: 300px;
     z-index: -1;
     animation: animate 18s linear infinite;
     border-radius: 55px;
+
+    filter: blur(20px);
 }
 
 @keyframes animate {
-    0%, 100% { background-position: 0 0; }
-    50%  { background-position: 400% 0; }
-}
-
-.glow::after {
-    filter: blur(80px);
-    opacity: 1;
+    0%   { background-position: 0 0;    }
+    50%  { background-position: 100% 0; }
+    100% { background-position: 0 0;    }
 }
 
 #snow {
