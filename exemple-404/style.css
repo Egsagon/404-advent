@@ -3,11 +3,21 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins|Pixelify Sans');
 
 :root {
-    --bg-color: color-mix(in srgb, var(--white) calc(100% * var(--is-light-scheme)),
-                                   var(--black));
+    --bg-color: color-mix(
+        in srgb,
+        var(--dim) calc(100% * var(--can-dim-be-bg)),
+        color-mix(
+            in srgb,
+            var(--white) calc(100% * var(--is-light-scheme)),
+            var(--black)
+        )
+    );
 
-    --fg-color: color-mix(in srgb, var(--black) calc(100% * var(--is-light-scheme)),
-                                   var(--white));
+    --fg-color: color-mix(
+        in srgb,
+        var(--black) calc(100% * var(--is-light-scheme)),
+        var(--white)
+    );    
 }
 
 * {
@@ -79,8 +89,8 @@ h1:hover i {
     height: 300px;
     transition: all ease-in-out .3s;
     cursor: pointer;
-    border: 7px solid var(--black);
-    border-radius: 63px;
+    border: 7px solid var(--bg-color);
+    border-radius: var(--logo-border-radius);
     z-index: 5;
 }
 
@@ -173,8 +183,8 @@ h1:hover i {
     z-index: 9;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -25%);
+    bottom: 50%;
+    transform: translate(-50%, 50%);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -191,13 +201,13 @@ h1:hover i {
 
 #logo {
     width: 260px;
-    border-radius: 20px;
+    /* border-radius: var(--logo-border-radius); */
 }
 
 #pres .glow {
     padding: 6px;
     padding-bottom: 0;
-    border-radius: 20px;
+    border-radius: var(--logo-border-radius);
     transform: translateY(0);
 }
 
@@ -231,6 +241,11 @@ h1:hover i {
 
 #pres h3 span {
     color: var(--primary);
+    font-family: 'Pixelify Sans';
+}
+
+#pres p {
+    min-width: 200px;
 }
 
 .glow::before,
@@ -245,19 +260,13 @@ h1:hover i {
     width: 100%;
     height: 100%;
     z-index: -1;
-    animation: animate 18s linear infinite;
-    border-radius: 55px;
+    animation: glow 18s linear infinite;
+    border-radius: var(--logo-border-radius);
 }
 
 .glow::after {
     z-index: -1;
     filter: blur(45px);
-}
-
-@keyframes animate {
-    0%   { background-position: 0 0;    }
-    50%  { background-position: 100% 0; }
-    100% { background-position: 0 0;    }
 }
 
 #snow {
@@ -284,6 +293,7 @@ h1:hover i {
     top: 24px;
     font-size: 24px;
     transition: all ease-in-out .35s;
+    color: var(--fg-color);
 }
 
 #content {
@@ -294,7 +304,7 @@ h1:hover i {
     display: none;
     padding: 0;
     margin: 0;
-    display: none; /* flex */
+    display: none;
     flex-direction: column;
     align-items: center;
 }
@@ -303,7 +313,7 @@ h1:hover i {
     margin: 20px;
     padding: 20px;
     border-radius: 20px;
-    max-width: 800px;
+    width: 800px;
     background-color: var(--black);
     line-height: 40px;
     font-size: 18px;
@@ -340,7 +350,7 @@ h1:hover i {
     background-position: 0, 600px, 1200px, 1800px, 2400px, 3000px, 3600px,
                          4200px, 4800px, 5400px, 6000px;
 
-    animation: slide calc(10s * var(--slide-count)) linear infinite;
+    animation: slide calc(20s * var(--slide-count)) linear infinite;
 }
 
 .socials {
@@ -409,10 +419,16 @@ h1:hover i {
     width: 100%;
     height: 100px;
 
-    background-image: url('src/Banner.png');
+    background-image: var(--banner);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@keyframes glow {
+    0%   { background-position: 0 0;    }
+    50%  { background-position: 100% 0; }
+    100% { background-position: 0 0;    }
 }
 
 @keyframes slide {

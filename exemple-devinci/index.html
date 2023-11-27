@@ -3,19 +3,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Jour #J</title>
-    <link rel="shortcut icon" href="icon.svg">
+    <title>Advent 404 - jour #4</title>
+    <link rel="shortcut icon" href="src/icon.svg">
 
     <style>
         :root {
             /* Couleurs */
 
-            --is-light-scheme: 0; /* Color scheme, 1 ou 0 */
-
             --primary: #ED414E;
-            --dim: #070001;
+            --dim: #090001;
             --black: #000;
             --white: #fff;
+
+            /* Paramètres */
+
+            --is-light-scheme: 0; /* Color scheme (0 ou 1) */
+            --can-dim-be-bg: 0;   /* Si --dim est adapté pour être un fond (0 ou 1) */ 
+            --logo-border-radius: 55px;
             
             /* Images a mettre dans le slide */
             --slide-count: 3; /* Max 10 */
@@ -24,6 +28,8 @@
             /* Répeter 2 fois pour le scroll */
             --slides: url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg'),
                     url('src/image-1.jpg'), url('src/image-2.jpg'), url('src/image-3.jpg');
+            
+            --banner: url('src/Banner.png')
         }
     </style>
 
@@ -34,7 +40,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <a href="/"><h1><i class="fa-solid fa-angle-left"></i>Jour <span>#J</span></h1></a>
+    <a href="/"><h1><i class="fa-solid fa-angle-left"></i>Jour <span>#4</span></h1></a>
 
     <div class="discover">
         <h3>Tape le cadeau !</h3>
@@ -56,7 +62,6 @@
             <p>
                 <!--
                     Description super courte en quelques mots
-                    Enlever les br en fonction du nombre de lignes (1 ou 2 lignes max)
                 -->
                 L'asso placeholder du Pôle qui fait des trucs cools
                 
@@ -85,9 +90,10 @@ Bien evidement on se chargera de raccourcir les textes que nous ont envoyés les
 
             <h4>Leurs réseaux</h4>
             <div>
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <!-- Liens réseaux (FA6) -->
+                <a href="https://www.facebook.com/La404Devinci" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/la404.devinci/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/la-404-devinci" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
             </div>
         </div>
 
