@@ -430,10 +430,60 @@ h1:hover i {
     background-position: center;
 }
 
+#scroll {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    padding: 0 !important;
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+    transition: all ease-in-out .2s;
+    animation: wander forwards alternate infinite linear 3s;
+}
+
+#scroll:hover {
+    scale: 1.45;
+    background-color: var(--primary) !important;
+    animation: get_angry forwards alternate infinite linear .1s;
+}
+
+#scroll img {
+    display: none;
+    scale: .7;
+}
+
+#scroll img.brrr {
+    display: block;
+}
+
+@keyframes wander {
+    0%     { transform: translate(0,  0px) }
+    50%    { transform: translate(0, 15px) }
+    100%   { transform: translate(0, -0px) }
+}
+
+@keyframes get_angry {
+    0%   {
+        rotate: -5deg;
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.9);
+    }
+    100% {
+        rotate: 5deg;
+        transform: scale(1);
+    }
+}
+
 @keyframes glow {
-    0%   { background-position: 0 0;    }
-    50%  { background-position: 100% 0; }
-    100% { background-position: 0 0;    }
+    0%   { background-position: 0 0    }
+    50%  { background-position: 100% 0 }
+    100% { background-position: 0 0    }
 }
 
 @keyframes slide {
