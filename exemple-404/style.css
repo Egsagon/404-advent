@@ -443,6 +443,7 @@ h1:hover i {
     color: var(--bg-color);
     transition: all ease-in-out .2s;
     animation: wander forwards alternate infinite linear 3s;
+    margin: 10px;
 }
 
 #scroll:hover {
@@ -454,6 +455,7 @@ h1:hover i {
 #scroll img {
     display: none;
     scale: .7;
+    transform: translateY(90px);
 }
 
 #scroll img.brrr {
@@ -503,4 +505,5 @@ h1:hover i {
     #pres    { flex-direction: row }
     #pres h3 { display: none       }
     #pres p  { margin-left: 40px   }
+    #scroll { margin-left: 30px }
 }
