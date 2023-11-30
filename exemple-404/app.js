@@ -40,11 +40,11 @@ $('#present').on('click touchend', () => {
 })
 
 $('#scroll').on('click touchend', () => {
-    $('#scroll img').addClass('brrr')
+    $('#scroll').addClass('brrr')
 
     $('html, body').animate({
         scrollTop: $(`#content`).offset().top
-    }, 600)
+    }, 800)
 
-    setTimeout(() => $('#scroll img').removeClass('brrr'), 700)
+    setTimeout(() => $('#scroll').removeClass('brrr'), 700)
 })

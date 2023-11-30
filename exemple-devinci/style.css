@@ -454,12 +454,24 @@ h1:hover i {
 
 #scroll img {
     display: none;
-    scale: .7;
-    transform: translateY(90px);
+    transform: translateY(50px);
+    width: 50px;
+    background-color: transparent;
 }
 
-#scroll img.brrr {
+#scroll.brrr {
+    transition: none;
+    font-size: 0;
+    scale: 1.45;
+    background-color: var(--primary) !important;
+    filter: blur(2px);
+}
+
+#scroll.brrr img {
     display: block;
+    z-index: 10;
+
+    filter: drop-shadow(0 0 4rem #ff3300);
 }
 
 @keyframes wander {
@@ -469,17 +481,9 @@ h1:hover i {
 }
 
 @keyframes get_angry {
-    0%   {
-        rotate: -5deg;
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(.9);
-    }
-    100% {
-        rotate: 5deg;
-        transform: scale(1);
-    }
+    0%   { transform: scale(1) rotate(-5deg) }
+    50%  { transform: scale(.9)              }
+    100% { transform: scale(1) rotate(5deg)  }
 }
 
 @keyframes glow {
@@ -507,3 +511,9 @@ h1:hover i {
     #pres p  { margin-left: 40px   }
     #scroll { margin-left: 30px }
 }
+
+/* Non-firefox scrollbars */
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-track { background: transparent }
+::-webkit-scrollbar-thumb { background: #888 }
+::-webkit-scrollbar-thumb:hover { background: #555 }
